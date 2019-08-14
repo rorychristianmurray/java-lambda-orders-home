@@ -188,7 +188,18 @@ public class Customers
         this.agent = agent;
     }
 
+
     // handle getting and setting list
+
+    public List<Orders> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders)
+    {
+        this.orders = orders;
+    }
 
 
 }
