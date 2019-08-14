@@ -43,7 +43,6 @@ public class Orders
 
     // generate getters and setter
 
-
     public long getOrdnum()
     {
         return ordnum;
