@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// name your table
+// table and field names are lower case
+
+
 @Entity
 @Table(name = "agents")
 public class Agents {
@@ -19,6 +23,7 @@ public class Agents {
     private double commission;
     private String phone;
     private String country;
+
     // type of relational mapping goes here
     // One agent will have many customers, hence it is a OneToMany relationship
     // dont forget foreign key mapping for this table
@@ -27,10 +32,12 @@ public class Agents {
             orphanRemoval = true)
     @JsonIgnoreProperties("agents")
     private List<Customers> customers = new ArrayList<>();
+
     // Spring needs a blank default constructor
     public Agents()
     {
     }
+
     // now add our regular constructor
     public Agents(String name, String workingarea, double commission, String phone, String country, List<Customers> customers) {
         this.name = name;
