@@ -9,7 +9,6 @@ import java.util.List;
 // name your table
 // table and field names are lower case
 
-
 @Entity
 @Table(name = "agents")
 public class Agents {
