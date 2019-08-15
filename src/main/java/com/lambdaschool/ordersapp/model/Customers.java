@@ -1,6 +1,5 @@
 package com.lambdaschool.ordersapp.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table() // why doesn't this have a name/value?
 
 public class Customers
 {
@@ -32,6 +31,7 @@ public class Customers
     private String grade;
     private double openingamount;
     private double receiveamount;
+    private double paymentamount; // *** ADD IN ***
     private double outstandingamount;
     private String phone;
 
@@ -48,11 +48,11 @@ public class Customers
     // telling our database what type of relationship this will have and to what
     // handled by Spring Boot **check this. Is it Spring Data? JPA (Java Protection Agency)
     // This field is an ArrayList holding data of the Orders type
-    @OneToMany(mappedBy = "customers",
+    @OneToMany(mappedBy = "customers", // *** CHECK THIS ***
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    @JsonIgnoreProperties("customers") // prevent infinite loop
-    private List<Orders> order = new ArrayList;
+    @JsonIgnoreProperties("customers") // prevent infinite loop // *** CHECK THIS ***
+    private List<Orders> orders = new ArrayList<>();
 
     // base constructor for Spring Boot
     public Customers()
@@ -61,7 +61,7 @@ public class Customers
 
     // regular constructor for our getters and setters
 
-    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamount, double receiveamount, double outstandingamount, String phone, Agents agent)
+    public Customers(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamount, double receiveamount, double paymentamount, double outstandingamount, String phone, Agents agent)
     {
         this.custname = custname;
         this.custcity = custcity;
@@ -71,6 +71,7 @@ public class Customers
         this.openingamount = openingamount;
         this.receiveamount = receiveamount;
         this.outstandingamount = outstandingamount;
+        this.paymentamount = paymentamount;
         this.phone = phone;
         this.agent = agent;
     }
@@ -157,6 +158,17 @@ public class Customers
     {
         this.receiveamount = receiveamount;
     }
+
+    public double getPaymentamt()
+    {
+        return paymentamount;
+    }
+
+    public void setPaymentamt(double paymentamt)
+    {
+        this.paymentamount = paymentamt;
+    }
+
 
     public double getOutstandingamount()
     {
