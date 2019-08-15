@@ -83,47 +83,47 @@ public class CustomersServiceImpl implements CustomersService
     @Override
     public Customers update(Customers customer, long id)
     {
-        Customers customer = custyrepos.findById(id).orElseThrow(() -> EntityNotFoundException(Long.toString(id)));
+        Customers thisCustomer = custyrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
 
         if (customer.getCustname() != null)
         {
-            customer.setCustname(customer.getCustname());
+            thisCustomer.setCustname(customer.getCustname());
         }
         else if (customer.getCustcity() != null)
         {
-            customer.setCustcity(customer.getCustcity());
+            thisCustomer.setCustcity(customer.getCustcity());
         }
         else if (customer.getWorkingarea() != null)
         {
-            customer.setWorkingarea(customer.getWorkingarea());
+            thisCustomer.setWorkingarea(customer.getWorkingarea());
         }
         else if (customer.getCustcountry() != null)
         {
-            customer.setCustcountry(customer.getCustcountry());
+            thisCustomer.setCustcountry(customer.getCustcountry());
         }
         else if (customer.getGrade() != null)
         {
-            customer.setGrade(customer.getGrade());
+            thisCustomer.setGrade(customer.getGrade());
         }
-        else if (customer.getOpeningamount() != null)
+        else if (customer.getOpeningamount() != 0)
         {
-            customer.setOpeningamount(customer.getOpeningamount());
+            thisCustomer.setOpeningamount(customer.getOpeningamount());
         }
-        else if (customer.setReceiveamount() != null)
+        else if (customer.getReceiveamount() != 0)
         {
-            customer.setReceiveamount(customer.getReceiveamount());
+            thisCustomer.setReceiveamount(customer.getReceiveamount());
         }
-        else if (customer.setOutstandingamount() != null )
+        else if (customer.getOutstandingamount() != 0 )
         {
-            customer.setOutstandingamount(customer.getOutstandingamount());
+            thisCustomer.setOutstandingamount(customer.getOutstandingamount());
         }
-        else if (customer.setPhone() != null)
+        else if (customer.getPhone() != null)
         {
-            customer.setPhone(customer.getPhone());
+            thisCustomer.setPhone(customer.getPhone());
         }
-        else if (customer.setAgent() != null)
+        else if (customer.getAgent() != null)
         {
-            customer.setAgent(customer.getAgent());
+            thisCustomer.setAgent(customer.getAgent());
         }
 
         // add new orders
@@ -131,7 +131,7 @@ public class CustomersServiceImpl implements CustomersService
         {
             for (Orders o : customer.getOrders())
             {
-                customer.getOrders().add(new Orders(o.getOrdamount(), o.getAdvanceamount(), o.getOrddescription()));
+                thisCustomer.getOrders().add(new Orders(o.getOrdamount(), o.getAdvanceamount(), thisCustomer, o.getOrddescription()));
             }
 
             return custyrepos.save(customer);
@@ -146,12 +146,12 @@ public class CustomersServiceImpl implements CustomersService
     {
         if (custyrepos.findById(id).isPresent())
         {
-            custyrepos.deleteById();
+            custyrepos.deleteById(id);
         }
         else
         {
             throw new EntityNotFoundException(Long.toString(id));
         }
     }
-    
+
 }

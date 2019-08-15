@@ -41,7 +41,7 @@ public class Orders
         this.orddescription = orddescription;
     }
 
-    // generate getters and setter
+    // generate getters and setters
 
     public long getOrdnum()
     {
