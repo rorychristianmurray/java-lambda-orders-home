@@ -11,7 +11,7 @@ import javax.persistence.EntityNotFoundException;
 
 @Transactional
 @Service(value = "agentsService")
-public class AgentsServiceImpl
+public class AgentsServiceImpl implements AgentsService
 {
     @Autowired
     private AgentsRepository agentsrepos;
@@ -20,7 +20,7 @@ public class AgentsServiceImpl
     public Agents findAgentById(long id) throws EntityNotFoundException // I don't get why we do this
     {
         // wiring the AgentsRepository to the CrudRepository gives us access to the findById method
-        return agentsrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)))
+        return agentsrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
     }
 
 
