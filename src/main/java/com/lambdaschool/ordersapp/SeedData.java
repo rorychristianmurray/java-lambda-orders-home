@@ -1,6 +1,6 @@
 package com.lambdaschool.ordersapp;
 
-import com.lambdaschool.orders.model.Agents;
+import com.lambdaschool.ordersapp.model.Agents;
 import com.lambdaschool.ordersapp.model.Customers;
 import com.lambdaschool.ordersapp.model.Orders;
 import com.lambdaschool.ordersapp.repos.AgentsRepository;
@@ -79,7 +79,7 @@ public class SeedData implements CommandLineRunner
         Orders o10 = new Orders(c07, 700.00, 4000.00, "SOD");
         Orders o11 = new Orders(c08, 600.00, 1500.00, "SOD");
         Orders o12 = new Orders(c25, 400.00, 2500.00, "SOD");
-        
+
 
         agentrepos.save(a01);
         agentrepos.save(a02);

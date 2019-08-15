@@ -1,4 +1,4 @@
-package com.lambdaschool.orders.model;
+package com.lambdaschool.ordersapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lambdaschool.ordersapp.model.Customers;
 
@@ -26,10 +26,10 @@ public class Agents {
     // type of relational mapping goes here
     // One agent will have many customers, hence it is a OneToMany relationship
     // dont forget foreign key mapping for this table
-    @OneToMany(mappedBy = "agents",
+    @OneToMany(mappedBy = "agent",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties("agents")
+    @JsonIgnoreProperties("agent")
     private List<Customers> customers = new ArrayList<>();
 
     // Spring needs a blank default constructor
@@ -44,7 +44,6 @@ public class Agents {
         this.commission = commission;
         this.phone = phone;
         this.country = country;
-        this.customers = customers;
     }
     // generate getters and setter, but not List
     public long getAgentcode() {
@@ -84,4 +83,13 @@ public class Agents {
         this.country = country;
     }
     // handle list
+    public List<Customers> getCustomers()
+    {
+        return customers;
+    }
+
+    public void setCustomers(List<Customers> customers)
+    {
+        this.customers = customers;
+    }
 }

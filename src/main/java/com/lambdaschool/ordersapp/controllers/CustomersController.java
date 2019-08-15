@@ -33,7 +33,7 @@ public class CustomersController
     @GetMapping(value = "/name/{custname}", produces = {"application/json"})
     public ResponseEntity<?> getCustomerByName(@PathVariable String custname)
     {
-        Customers aCustomer = customersService.findCustomersByName(custname);
+        Customers aCustomer = customersService.findByCustname(custname);
         return new ResponseEntity<>(aCustomer, HttpStatus.OK);
     }
 

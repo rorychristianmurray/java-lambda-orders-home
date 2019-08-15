@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-import com.lambdaschool.orders.model.Agents;
+import com.lambdaschool.ordersapp.model.Agents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +48,10 @@ public class Customers
     // telling our database what type of relationship this will have and to what
     // handled by Spring Boot **check this. Is it Spring Data? JPA (Java Protection Agency)
     // This field is an ArrayList holding data of the Orders type
-    @OneToMany(mappedBy = "customers", // *** CHECK THIS ***
+    @OneToMany(mappedBy = "customer", // *** CHECK THIS ***
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    @JsonIgnoreProperties("customers") // prevent infinite loop // *** CHECK THIS ***
+    @JsonIgnoreProperties("customer") // prevent infinite loop // *** CHECK THIS ***
     private List<Orders> orders = new ArrayList<>();
 
     // base constructor for Spring Boot
@@ -168,7 +168,6 @@ public class Customers
     {
         this.paymentamount = paymentamt;
     }
-
 
     public double getOutstandingamount()
     {

@@ -21,7 +21,7 @@ public interface CustomersService
     Customers findCustomersById(long id);
 
     // find customers by name
-    Customers findCustomersByName(String name);
+    Customers findByCustname(String name);
 
     // create a new customer
     Customers save(Customers customer);

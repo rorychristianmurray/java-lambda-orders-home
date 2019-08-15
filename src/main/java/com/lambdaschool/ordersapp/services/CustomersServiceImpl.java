@@ -18,6 +18,9 @@ public class CustomersServiceImpl implements CustomersService
     @Autowired
     private CustomersRepository custyrepos;
 
+    @Autowired
+    private AgentsService agentsService;
+
 
     //implement findAllCustomers method
     @Override
@@ -34,20 +37,20 @@ public class CustomersServiceImpl implements CustomersService
 
         // implement findCustomersById method using built in methods from CrudRepository
         @Override
-        public Customers findCustomersById(long id)
+        public Customers findCustomersById(long id) throws EntityNotFoundException
         {
             return custyrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
         }
 
         // implement findCustomersByName method using built in methods from CrudRepository
         @Override
-        public Customers findCustomersByName(String name)
+        public Customers findByCustname(String custname)
         {
-            Customers customer = custyrepos.findCustomersByName(name);
+            Customers customer = custyrepos.findByCustname(custname);
 
             if (customer == null)
             {
-                throw new EntityNotFoundException("Customer " + name + " not found, ya rascal!");
+                throw new EntityNotFoundException("Customer " + custname + " not found, ya rascal!");
             }
             return customer;
         }
@@ -66,9 +69,10 @@ public class CustomersServiceImpl implements CustomersService
         newCustomer.setGrade(customer.getGrade());
         newCustomer.setOpeningamount(customer.getOpeningamount());
         newCustomer.setReceiveamount(customer.getReceiveamount());
+        newCustomer.setPaymentamt(customer.getPaymentamt());
         newCustomer.setOutstandingamount(customer.getOutstandingamount());
         newCustomer.setPhone(customer.getPhone());
-        newCustomer.setAgent(customer.getAgent());
+        newCustomer.setAgent(agentsService.findAgentById(customer.getAgent().getAgentcode()));
 
         for (Orders o : customer.getOrders())
         {
