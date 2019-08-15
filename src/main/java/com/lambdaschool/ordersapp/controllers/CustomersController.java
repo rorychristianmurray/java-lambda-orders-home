@@ -26,7 +26,7 @@ public class CustomersController
     public ResponseEntity<?> listAllCustomers()
     {
         List<Customers> theCustomers = customersService.findAllCustomers();
-        return new ResponseEntity<>(theCustomers, HttpStatus.OK)
+        return new ResponseEntity<>(theCustomers, HttpStatus.OK);
     }
 
 //    get customer by name

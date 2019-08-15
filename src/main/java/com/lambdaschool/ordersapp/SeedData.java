@@ -67,18 +67,19 @@ public class SeedData implements CommandLineRunner
         Customers c24 = new Customers("Venkatpati", "Bangalore", "Bangalore", "India", "2", 8000.00, 11000.00, 7000.00, 12000.00, "JRTVFDD", a07);
         Customers c25 = new Customers("Sundariya", "Chennai", "Chennai", "India", "3", 7000.00, 11000.00, 7000.00, 11000.00, "PPHGRTS", a10);
 
-        Orders o01 = new Orders(1000.00, 600.00, c13, "SOD");
-        Orders o02 = new Orders(3000.00, 500.00, c19, "SOD");
-        Orders o03 = new Orders(4500.00, 900.00, c07, "SOD");
-        Orders o04 = new Orders(2000.00, 400.00, c16, "SOD");
-        Orders o05 = new Orders(4000.00, 600.00, c22, "SOD");
-        Orders o06 = new Orders(2000.00, 300.00, c12, "SOD");
-        Orders o07 = new Orders(3500.00, 2000.00, c02, "SOD");
-        Orders o08 = new Orders(2500.00, 400.00, c03, "SOD");
-        Orders o09 = new Orders(500.00, 100.00, c23, "SOD");
-        Orders o10 = new Orders(4000.00, 700.00, c07, "SOD");
-        Orders o11 = new Orders(1500.00, 600.00, c08, "SOD");
-        Orders o12 = new Orders(2500.00, 400.00, c25, "SOD");
+        Orders o01 = new Orders(c13, 600.00, 1000.00, "SOD");
+        Orders o02 = new Orders(c19, 500.00, 3000.00, "SOD");
+        Orders o03 = new Orders(c07, 900.00, 4500.00, "SOD");
+        Orders o05 = new Orders(c22, 600.00, 4000.00, "SOD");
+        Orders o04 = new Orders(c16, 400.00, 2000.00, "SOD");
+        Orders o06 = new Orders(c12, 300.00, 3000.00, "SOD");
+        Orders o07 = new Orders(c02, 2000.00, 3500.00, "SOD");
+        Orders o08 = new Orders(c03, 400.00, 2500.00, "SOD");
+        Orders o09 = new Orders(c23, 100.00, 500.00, "SOD");
+        Orders o10 = new Orders(c07, 700.00, 4000.00, "SOD");
+        Orders o11 = new Orders(c08, 600.00, 1500.00, "SOD");
+        Orders o12 = new Orders(c25, 400.00, 2500.00, "SOD");
+        
 
         agentrepos.save(a01);
         agentrepos.save(a02);

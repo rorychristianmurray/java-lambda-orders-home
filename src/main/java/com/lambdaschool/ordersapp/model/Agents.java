@@ -38,7 +38,7 @@ public class Agents {
     }
 
     // now add our regular constructor
-    public Agents(String name, String workingarea, double commission, String phone, String country, List<Customers> customers) {
+    public Agents(String name, String workingarea, double commission, String phone, String country) {
         this.name = name;
         this.workingarea = workingarea;
         this.commission = commission;
