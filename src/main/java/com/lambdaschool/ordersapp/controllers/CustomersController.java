@@ -29,15 +29,12 @@ public class CustomersController
         return new ResponseEntity<>(theCustomers, HttpStatus.OK)
     }
 
-    get customer by name
+//    get customer by name
     @GetMapping(value = "/name/{custname}", produces = {"application/json"})
     public ResponseEntity<?> getCustomerByName(@PathVariable String custname)
     {
         Customers aCustomer = customersService.findCustomersByName(custname);
         return new ResponseEntity<>(aCustomer, HttpStatus.OK);
     }
-
-
-
 
 }
