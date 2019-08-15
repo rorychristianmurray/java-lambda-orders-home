@@ -72,7 +72,7 @@ public class CustomersServiceImpl implements CustomersService
 
         for (Orders o : customer.getOrders())
         {
-            customer.getOrders().add(new Orders(o.getOrdamount(), o.getAdvanceamount(), customer, o.getOrddescription()));
+            customer.getOrders().add(new Orders(customer, o.getOrdamount(), o.getAdvanceamount(), o.getOrddescription()));
         }
         return custyrepos.save(customer);
 
@@ -133,9 +133,8 @@ public class CustomersServiceImpl implements CustomersService
             {
                 thisCustomer.getOrders().add(new Orders(customer, o.getOrdamount(), o.getAdvanceamount(), o.getOrddescription()));
             }
-
-            return custyrepos.save(customer);
         }
+        return custyrepos.save(customer);
 
     }
 
